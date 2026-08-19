@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <title><%= t.siteTitle %></title>
+</head>
+<body>
+    <div id="sailio">
+        <nav id="navi">
+            <% if (user) { %>
+                <ul>
+                    <li><a href="<%= p('/viestit') %>"><%= t.nav.messages %></a></li>
+                    <li><a href="<%= p('/pelit') %>"><%= t.nav.games %></a></li>
+                    <% if (user.yllapitaja == 1) { %>
+                        <li><a href="<%= p('/kayttajat') %>"><%= t.nav.users %></a></li>
+                        <li><a href="<%= p('/tapahtumat') %>"><%= t.nav.events %></a></li>
+                    <% } %>
+                    <li><a href="<%= p('/logout') %>"><%= t.nav.logout %></a></li>
+                </ul>
+            <% } %>
+        </nav>
+        <main>
+            <%- body %>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<h1><%= t.home.title %></h1>
+
+<p><%= t.home.intro %></p>
+
+<form action="<%= p('/login') %>" method="post">
+    <p><label for="tunnus" class="fixed-width"><%= t.home.username %></label><input type="text" name="tunnus" id="tunnus"></p>
+    <p><label for="salasana" class="fixed-width"><%= t.home.password %></label><input type="text" name="salasana" id="salasana"></p>
+    <input type="submit" value="<%= t.home.submit %>">
+</form>
+
+<% if (attemptedName) { %>
+    <p><%= t.home.loginFailedPrefix %><%- attemptedName %><%= t.home.loginFailedSuffix %></p>
+<% } %>
+
+<% if (error) { %>
+    <p style="color: red"><%= error %></p>
+<% } %>

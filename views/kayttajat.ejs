@@ -1,0 +1,30 @@
+<h1><%= t.users.title %></h1>
+
+<p><%= t.users.intro %></p>
+
+<% if (error) { %>
+    <p style="color: red"><%= error %></p>
+<% } %>
+
+<% if (kayttajat && kayttajat.length > 0) { %>
+    <table>
+        <thead>
+            <tr>
+                <th><%= t.users.username %></th>
+                <th><%= t.users.email %></th>
+                <th><%= t.users.role %></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% kayttajat.forEach(function(kayttaja) { %>
+                <tr>
+                    <td><%= kayttaja.tunnus %></td>
+                    <td><%= kayttaja.sahkoposti %></td>
+                    <td><%= kayttaja.yllapitaja == 1 ? t.users.admin : t.users.member %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+<% } else { %>
+    <p><em><%= t.users.empty %></em></p>
+<% } %>

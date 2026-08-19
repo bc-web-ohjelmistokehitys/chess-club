@@ -1,0 +1,28 @@
+<h1><%= t.events.title %></h1>
+
+<p><%= t.events.intro %></p>
+
+<% if (error) { %>
+    <p style="color: red"><%= error %></p>
+<% } %>
+
+<% if (tapahtumat && tapahtumat.length > 0) { %>
+    <table>
+        <thead>
+            <tr>
+                <th><%= t.events.timestamp %></th>
+                <th><%= t.events.description %></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% tapahtumat.forEach(function(tapahtuma) { %>
+                <tr>
+                    <td><%= tapahtuma.aikaleima %></td>
+                    <td><%= tapahtuma.kuvaus %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+<% } else { %>
+    <p><em><%= t.events.empty %></em></p>
+<% } %>
